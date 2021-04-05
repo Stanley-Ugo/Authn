@@ -28,7 +28,7 @@ namespace Authn.Controllers
             return View();
         }
 
-        public IActionResult SecuredRoute()
+        public IActionResult Secured()
         {
             return View();
         }
