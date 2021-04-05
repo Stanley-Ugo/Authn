@@ -27,7 +27,7 @@ namespace Authn
             services.AddControllersWithViews();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options => {
-                    options.LoginPath = "/login";
+                    options.LoginPath = "/Login";
                 });
         }
 
