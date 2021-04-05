@@ -357,3 +357,4 @@ C:\Projects\Authn\obj\Debug\net5.0\Authn.pdb
 C:\Projects\Authn\obj\Debug\net5.0\Authn.genruntimeconfig.cache
 C:\Projects\Authn\obj\Debug\net5.0\Razor\Views\Home\Secured.cshtml.g.cs
 C:\Projects\Authn\obj\Debug\net5.0\Razor\Views\Home\Login.cshtml.g.cs
+C:\Projects\Authn\obj\Debug\net5.0\Razor\Views\Home\Denied.cshtml.g.cs

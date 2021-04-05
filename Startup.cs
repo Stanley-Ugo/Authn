@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Authn
@@ -28,6 +29,31 @@ namespace Authn
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options => {
                     options.LoginPath = "/Login";
+                    options.AccessDeniedPath = "/Denied";
+                    options.Events = new CookieAuthenticationEvents()
+                    {
+                        OnSigningIn = async context =>
+                        {
+                            var principle = context.Principal;
+                            if(principle.HasClaim(c => c.Type == ClaimTypes.NameIdentifier))
+                            {
+                                if(principle.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value == "bob")
+                                {
+                                    var claimsIdentity = principle.Identity as ClaimsIdentity;
+                                    claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, "Admin"));
+                                }
+                            }
+                            await Task.CompletedTask;
+                        },
+                        OnSignedIn = async context =>
+                        {
+                            await Task.CompletedTask;
+                        },
+                        OnValidatePrincipal = async context =>
+                        {
+                            await Task.CompletedTask;
+                        }
+                    };
                 });
         }
 
@@ -48,6 +74,8 @@ namespace Authn
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
