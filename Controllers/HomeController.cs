@@ -41,6 +41,12 @@ namespace Authn.Controllers
             return View();
         }
 
+        [HttpPost("Login")]
+        public IActionResult Validate(string name, string password)
+        {
+            return Ok();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
