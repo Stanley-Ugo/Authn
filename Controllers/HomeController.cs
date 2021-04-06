@@ -46,6 +46,7 @@ namespace Authn.Controllers
             return View();
         }
 
+
         [HttpGet("Login")]
         public IActionResult Login(string returnUrl)
         {
