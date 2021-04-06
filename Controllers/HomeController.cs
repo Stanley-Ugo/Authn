@@ -54,6 +54,7 @@ namespace Authn.Controllers
             return View();
         }
 
+
         [HttpPost("Login")]
         public async Task<IActionResult> Validate(string username, string password, string returnUrl)
         {
