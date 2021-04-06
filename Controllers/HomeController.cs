@@ -77,6 +77,7 @@ namespace Authn.Controllers
             return View("Login");
         }
 
+
         [Authorize]
         public async Task<IActionResult> Logout()
         {
