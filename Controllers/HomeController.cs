@@ -32,6 +32,7 @@ namespace Authn.Controllers
             return View();
         }
 
+
         [HttpGet("Denied")]
         public IActionResult Denied()
         {
